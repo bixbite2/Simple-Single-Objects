@@ -1,5 +1,5 @@
 export class Fraction {
-    constructor(numerator, denominator = 1) {
+    constructor(numerator = 0, denominator = 1) {
         this._numerator = numerator;
         this._denominator = denominator;
     }
@@ -50,6 +50,29 @@ export class Fraction {
         return `${this._numerator*f1._numerator}/${f1._denominator*this._denominator}`
     }
 
+    greaterThan(f1) {
+        if ((this._numerator / this._denominator) > (f1._numerator / f1._denominator)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    lessThan(f1) {
+        if ((this._numerator / this._denominator) < (f1._numerator / f1._denominator)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    equals(f1) {
+        if ((this._numerator / this._denominator) === (f1._numerator / f1._denominator)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     toString() {
         return `${this._numerator}/${this._denominator}`

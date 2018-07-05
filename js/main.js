@@ -1,7 +1,8 @@
 import { FAN } from "./fan.class.js";
 import { Conta } from "./account.class.js";
-import { ATM } from "./ATM.class.js";
+// import { ATM } from "./ATM.class.js";
 import { Fraction } from "./fraction.class.js";
+import { PC } from "./myobj.class.js";
 console.log('main.js');
 
 const vent = new FAN(200, 'Arno', 100, 300);
@@ -161,17 +162,54 @@ console.log(minhaConta.saldo === 5940.0);
 console.log(minhaConta.toString() === 'ag 3300 cc 33345 saldo 5940.00');
 
 // ATM -------------------------------------------------------------------------
+/*
+const minhaConta = new Conta(3300, 33345);
+console.log(minhaConta.agencia === 3300);
+console.log(minhaConta.numero === 33345);
+console.log(minhaConta.toString() === 'ag 3300 cc 33345 saldo 500.00');
 
-const atm = new ATM(2344499);
-console.log(atm.numeroSerie === 2344499);
-// a linha a seguir não deve fazer efeito
-// atm.numeroSerie = 34883444;
-console.log(atm.numeroSerie === 2344499);
-// o ATM não tem dinheiro no início
-console.log(atm.valor); // 0
-console.log(atm.valor === 0);
-// abastecendo com 33 notas de 100
-atm.abastecer(33, 100);
+minhaConta.numero = 92932334; // não deve ter efeito
+console.log(minhaConta.numero === 33345);
+
+// saldo inicial de 500
+console.log(minhaConta.saldo); // 500.0
+console.log(minhaConta.saldo === 500.0);
+
+// não é permitido
+minhaConta.sacar(600.0);
+console.log(minhaConta.saldo); // 500.0
+console.log(minhaConta.saldo === 500.0);
+
+// é permitido
+minhaConta.sacar(60.0); // 500.0 - 60.0 === 440.0
+console.log(minhaConta.saldo); // 440.0
+console.log(minhaConta.saldo === 440.0);
+
+minhaConta.saldo = 1000000; // não deve ter efeito:
+console.log(minhaConta.saldo === 440.0);
+console.log(minhaConta.toString() === 'ag 3300 cc 33345 saldo 440.00');
+
+// depósito em dinheiro não permitido
+minhaConta.depositarEmDinheiro(1100.0);
+console.log(minhaConta.saldo); // 440.0
+console.log(minhaConta.saldo === 440.0);
+
+// depósito em dinheiro permitido
+minhaConta.depositarEmDinheiro(500.0); // 440.0 + 500.0 === 940.0
+console.log(minhaConta.saldo); // 940.0
+console.log(minhaConta.saldo === 940.0);
+
+// depósito em cheque não permitido
+minhaConta.depositarEmCheque(11100.0);
+console.log(minhaConta.saldo); // 940.0
+console.log(minhaConta.saldo === 940.0);
+
+// depósito em cheque permitido
+minhaConta.depositarEmCheque(5000.0); // 940.0 + 5000.0 === 5940.0
+console.log(minhaConta.saldo); // 5940.0
+console.log(minhaConta.saldo === 5940.0);
+console.log(minhaConta.toString() === 'ag 3300 cc 33345 saldo 5940.00');
+*/
 
 // Fraction(numerator, denominator)---------------------------------------------
 
@@ -267,9 +305,20 @@ const f14 = new Fraction(2, 3);
 const f15 = new Fraction(12, 36);
 const f16 = new Fraction(1, 3);
 // TODO: escreva mais 9 casos de teste com greaterThan, lessThan e equals
+console.log(f15.lessThan(f16));
+console.log(f15.lessThan(f14));
+console.log(f15.greaterThan(f14));
+console.log(f14.greaterThan(f14));
+console.log(f14.equals(f15));
+console.log(f14.greaterThan(f15));
+console.log(f15.lessThan(f14));
+console.log(f15.equals(f16));
+console.log(f14.equals(f14));
 
 const f17 = new Fraction(4);
 // TODO: escreva casos de teste para o valor que se espera de f17
+console.log(f17.toString() === '4/1');
 
 const f18 = new Fraction();
 // TODO: escreva casos de teste para o valor que se espera de f18
+console.log(f18.toString() === '0/1');
